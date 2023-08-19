@@ -39,3 +39,11 @@ def test_item_quantity_negative():
 
 def test_item_calculate_total_price(iphone):
     assert iphone.calculate_total_price() == 5000.0
+
+
+def test_item_apply_discount(iphone):
+    iphone.apply_discount()
+    assert iphone.price == 1000.0
+    Item.pay_rate = 0.8
+    iphone.apply_discount()
+    assert iphone.price == 800.0
