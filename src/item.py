@@ -13,7 +13,23 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        pass
+        if not isinstance(name, str):
+            raise ValueError('Значение должно быть строкой.')
+        self.name = name
+
+        if not isinstance(price, float):
+            raise ValueError('Значение должно быть числом с плавающей точкой.')
+        elif price < 0:
+            raise ValueError('Число должно быть неотрицательным.')
+        self.price = price
+
+        if not isinstance(quantity, int):
+            raise ValueError('Значение должно быть числом.')
+        elif quantity < 0:
+            raise ValueError('Число должно быть неотрицательным.')
+
+        self.quantity = quantity
+        Item.all.append(self)
 
     def calculate_total_price(self) -> float:
         """
