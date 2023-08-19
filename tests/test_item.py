@@ -37,5 +37,5 @@ def test_item_quantity_negative():
         Item('phone', 1000.0, -5)
 
 
-def test_calculate_total_price(iphone):
+def test_item_calculate_total_price(iphone):
     assert iphone.calculate_total_price() == 5000.0
