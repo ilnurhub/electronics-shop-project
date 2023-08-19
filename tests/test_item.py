@@ -10,9 +10,8 @@ def test_item_name_not_str():
         Item(['car', 'phone'], 15.0, 5)
 
 
-def test_item_price_not_float():
+def test_item_price():
     with pytest.raises(ValueError):
-        Item('phone', 15, 5)
         Item('phone', 'abc', 5)
         Item('phone', [15], 5)
 
@@ -22,9 +21,8 @@ def test_item_price_negative():
         Item('phone', -15.0, 5)
 
 
-def test_item_quantity_not_int():
+def test_item_quantity():
     with pytest.raises(ValueError):
-        Item('phone', 1000.0, 5.0)
         Item('phone', 1000.0, 'five')
         Item('phone', 1000.0, [5, 10])
 
