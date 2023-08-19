@@ -17,18 +17,18 @@ class Item:
             raise ValueError('Значение должно быть строкой.')
         self.name = name
 
-        if not isinstance(price, float):
-            raise ValueError('Значение должно быть числом с плавающей точкой.')
+        if not isinstance(price, (float, int)):
+            raise ValueError('Значение должно быть числом.')
         elif price < 0:
             raise ValueError('Число должно быть неотрицательным.')
-        self.price = price
+        self.price = float(price)
 
-        if not isinstance(quantity, int):
+        if not isinstance(quantity, (int, float)):
             raise ValueError('Значение должно быть числом.')
         elif quantity < 0:
             raise ValueError('Число должно быть неотрицательным.')
 
-        self.quantity = quantity
+        self.quantity = int(quantity)
         Item.all.append(self)
 
     def calculate_total_price(self) -> float:
