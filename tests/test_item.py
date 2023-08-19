@@ -3,6 +3,11 @@ import pytest
 from src.item import Item
 
 
+@pytest.fixture
+def iphone():
+    return Item('iphone', 1000, 5)
+
+
 def test_item_name_not_str():
     with pytest.raises(ValueError):
         Item(12344, 15.0, 5)
@@ -30,3 +35,7 @@ def test_item_quantity():
 def test_item_quantity_negative():
     with pytest.raises(ValueError):
         Item('phone', 1000.0, -5)
+
+
+def test_calculate_total_price(iphone):
+    assert iphone.calculate_total_price() == 5000.0
