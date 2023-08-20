@@ -51,3 +51,14 @@ def test_item_apply_discount(iphone):
 
 def test_getter_name(iphone):
     assert iphone.name == 'iphone'
+
+
+def test_setter_name_less_ten(iphone):
+    iphone.name = 'Iphone'
+    assert iphone.name == 'Iphone'
+
+
+def test_setter_name_over_ten(iphone):
+    iphone.name = 'Iphone_smartphone'
+    assert iphone.name == 'Iphone_sma'
+
