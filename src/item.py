@@ -31,6 +31,10 @@ class Item:
         self.quantity = int(quantity)
         Item.all.append(self)
 
+    @property
+    def name(self):
+        return self.__name
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
