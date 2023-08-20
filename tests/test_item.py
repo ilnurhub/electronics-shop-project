@@ -62,3 +62,8 @@ def test_setter_name_over_ten(iphone):
     iphone.name = 'Iphone_smartphone'
     assert iphone.name == 'Iphone_sma'
 
+
+def test_string_to_number():
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('5.5') == 5
