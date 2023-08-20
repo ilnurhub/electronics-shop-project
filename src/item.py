@@ -56,3 +56,15 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= Item.pay_rate
+
+    @staticmethod
+    def string_to_number(num_str):
+        """
+        Статический метод, возвращающий число из числа-строки
+        """
+        try:
+            num = int(num_str)
+        except ValueError:
+            num = int(float(num_str))
+        finally:
+            return num
