@@ -15,7 +15,7 @@ class Item:
         """
         if not isinstance(name, str):
             raise ValueError('Значение должно быть строкой.')
-        self.name = name
+        self.__name = name
 
         if not isinstance(price, (float, int)):
             raise ValueError('Значение должно быть числом.')
