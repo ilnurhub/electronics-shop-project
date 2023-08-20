@@ -47,3 +47,7 @@ def test_item_apply_discount(iphone):
     Item.pay_rate = 0.8
     iphone.apply_discount()
     assert iphone.price == 800.0
+
+
+def test_getter_name(iphone):
+    assert iphone.name == 'iphone'
