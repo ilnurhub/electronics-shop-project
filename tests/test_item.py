@@ -47,3 +47,28 @@ def test_item_apply_discount(iphone):
     Item.pay_rate = 0.8
     iphone.apply_discount()
     assert iphone.price == 800.0
+
+
+def test_getter_name(iphone):
+    assert iphone.name == 'iphone'
+
+
+def test_setter_name_less_ten(iphone):
+    iphone.name = 'Iphone'
+    assert iphone.name == 'Iphone'
+
+
+def test_setter_name_over_ten(iphone):
+    iphone.name = 'Iphone_smartphone'
+    assert iphone.name == 'Iphone_sma'
+
+
+def test_string_to_number():
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('5.5') == 5
+
+
+def test_instantiate_from_csv():
+    Item.instantiate_from_csv()
+    assert len(Item.all) == 5
