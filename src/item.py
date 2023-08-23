@@ -20,7 +20,7 @@ class Item:
         """
         if not isinstance(name, str):
             raise ValueError('Значение должно быть строкой.')
-        self.__name = name
+        self.name = name
 
         if not isinstance(price, (float, int)):
             raise ValueError('Значение должно быть числом.')
@@ -67,12 +67,12 @@ class Item:
         """
         Класс-метод, инициализирующий экземпляры класса `Item` данными из файла _src/items.csv_
         """
-        Item.all = []
+        cls.all = []
         file_path = os.path.join(ROOT_PATH, 'src', 'items.csv')
         with open(file_path, newline='', encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                cls(row['name'], float(row['price']), int(row['quantity']))
+                cls(row['name'], float(row['price']), cls.string_to_number(row['quantity']))
 
     @staticmethod
     def string_to_number(num_str) -> int:
