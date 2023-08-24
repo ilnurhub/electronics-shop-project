@@ -77,3 +77,6 @@ def test_instantiate_from_csv():
 def test_repr(iphone):
     assert repr(iphone) == "Item('iphone', 1000, 5)"
 
+
+def test_str(iphone):
+    assert str(iphone) == 'iphone'
