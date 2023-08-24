@@ -73,3 +73,7 @@ def test_instantiate_from_csv():
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
 
+
+def test_repr(iphone):
+    assert repr(iphone) == "Item('iphone', 1000, 5)"
+
