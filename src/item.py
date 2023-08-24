@@ -26,14 +26,13 @@ class Item:
             raise ValueError('Значение должно быть числом.')
         elif price < 0:
             raise ValueError('Число должно быть неотрицательным.')
-        self.price = float(price)
+        self.price = price
 
-        if not isinstance(quantity, (int, float)):
+        if not isinstance(quantity, int):
             raise ValueError('Значение должно быть числом.')
         elif quantity < 0:
             raise ValueError('Число должно быть неотрицательным.')
-
-        self.quantity = int(quantity)
+        self.quantity = quantity
         Item.all.append(self)
 
     @property
@@ -72,7 +71,7 @@ class Item:
         with open(file_path, newline='', encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                cls(row['name'], float(row['price']), cls.string_to_number(row['quantity']))
+                cls(row['name'], cls.string_to_number(row['price']), cls.string_to_number(row['quantity']))
 
     @staticmethod
     def string_to_number(num_str) -> int:
