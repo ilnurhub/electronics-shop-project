@@ -10,9 +10,9 @@ def iphone():
 
 def test_item_name_not_str():
     with pytest.raises(ValueError):
-        Item(12344, 15.0, 5)
-        Item(12344.0, 15.0, 5)
-        Item(['car', 'phone'], 15.0, 5)
+        Item(12344, 15, 5)
+        Item(12344.0, 15, 5)
+        Item(['car', 'phone'], 15, 5)
 
 
 def test_item_price():
@@ -23,22 +23,22 @@ def test_item_price():
 
 def test_item_price_negative():
     with pytest.raises(ValueError):
-        Item('phone', -15.0, 5)
+        Item('phone', -15, 5)
 
 
 def test_item_quantity():
     with pytest.raises(ValueError):
-        Item('phone', 1000.0, 'five')
-        Item('phone', 1000.0, [5, 10])
+        Item('phone', 1000, 'five')
+        Item('phone', 1000, [5, 10])
 
 
 def test_item_quantity_negative():
     with pytest.raises(ValueError):
-        Item('phone', 1000.0, -5)
+        Item('phone', 1000, -5)
 
 
 def test_item_calculate_total_price(iphone):
-    assert iphone.calculate_total_price() == 5000.0
+    assert iphone.calculate_total_price() == 5000
 
 
 def test_item_apply_discount(iphone):
@@ -72,3 +72,11 @@ def test_string_to_number():
 def test_instantiate_from_csv():
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
+
+
+def test_repr(iphone):
+    assert repr(iphone) == "Item('iphone', 1000, 5)"
+
+
+def test_str(iphone):
+    assert str(iphone) == 'iphone'

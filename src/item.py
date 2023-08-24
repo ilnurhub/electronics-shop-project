@@ -26,14 +26,13 @@ class Item:
             raise ValueError('Значение должно быть числом.')
         elif price < 0:
             raise ValueError('Число должно быть неотрицательным.')
-        self.price = float(price)
+        self.price = price
 
-        if not isinstance(quantity, (int, float)):
+        if not isinstance(quantity, int):
             raise ValueError('Значение должно быть числом.')
         elif quantity < 0:
             raise ValueError('Число должно быть неотрицательным.')
-
-        self.quantity = int(quantity)
+        self.quantity = quantity
         Item.all.append(self)
 
     @property
@@ -47,6 +46,20 @@ class Item:
         else:
             print('Exception: Длина наименования товара превышает 10 символов')
             self.__name = name[:10]
+
+    def __repr__(self):
+        """
+        Oтображает информацию об объекте класса в режиме отладки
+        Возвращает строку в формате "Название класса('название товара', цена товара, количество товара)"
+        """
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        """
+        Отображает информацию об объекте класса для пользователей
+        Возвращает строку в формате 'название товара'
+        """
+        return self.__name
 
     def calculate_total_price(self) -> float:
         """
@@ -72,7 +85,7 @@ class Item:
         with open(file_path, newline='', encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                cls(row['name'], float(row['price']), cls.string_to_number(row['quantity']))
+                cls(row['name'], cls.string_to_number(row['price']), cls.string_to_number(row['quantity']))
 
     @staticmethod
     def string_to_number(num_str) -> int:
