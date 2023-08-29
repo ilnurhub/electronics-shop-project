@@ -12,3 +12,7 @@ def test_phone_number_of_sim(samsung):
         Phone('samsung', 900, 10, 1.55)
         Phone('samsung', 900, 10, 0)
     assert samsung.number_of_sim == 2
+
+
+def test_str(samsung):
+    assert str(samsung) == 'samsung'
