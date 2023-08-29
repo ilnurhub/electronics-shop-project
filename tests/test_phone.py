@@ -16,3 +16,7 @@ def test_phone_number_of_sim(samsung):
 
 def test_str(samsung):
     assert str(samsung) == 'samsung'
+
+
+def test_repr(samsung):
+    assert repr(samsung) == "Phone('samsung', 900, 10, 2)"
