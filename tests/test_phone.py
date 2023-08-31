@@ -20,3 +20,8 @@ def test_str(samsung):
 
 def test_repr(samsung):
     assert repr(samsung) == "Phone('samsung', 900, 10, 2)"
+
+
+def test_change_number_of_sim(samsung):
+    with pytest.raises(ValueError):
+        samsung.number_of_sim = 0
