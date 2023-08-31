@@ -80,3 +80,9 @@ def test_repr(iphone):
 
 def test_str(iphone):
     assert str(iphone) == 'iphone'
+
+
+def test_add_quantity(iphone):
+    assert iphone + iphone == 10
+    with pytest.raises(ValueError):
+        assert iphone + 10 == 15
