@@ -13,7 +13,7 @@ class Phone(Item):
         Oтображает информацию об объекте класса в режиме отладки
         Возвращает строку в формате "Название класса('название товара', цена товара, количество товара, количество симкарт)"
         """
-        return super().__repr__()[0:-1] + f', {self.number_of_sim})'
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"
 
     @property
     def number_of_sim(self):
