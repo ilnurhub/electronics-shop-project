@@ -9,3 +9,7 @@ def keyboard():
 
 def test_str(keyboard):
     assert str(keyboard) == 'Dark Project KD87A'
+
+
+def test_language(keyboard):
+    assert str(keyboard.language) == 'EN'
