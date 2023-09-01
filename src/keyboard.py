@@ -2,7 +2,8 @@ from src.item import Item
 
 
 class MixinLang:
-    pass
+    def __init__(self):
+        self.language = 'EN'
 
 
 class Keyboard(Item, MixinLang):
