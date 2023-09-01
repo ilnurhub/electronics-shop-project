@@ -52,14 +52,14 @@ class Item:
         Oтображает информацию об объекте класса в режиме отладки
         Возвращает строку в формате "Название класса('название товара', цена товара, количество товара)"
         """
-        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
 
     def __str__(self):
         """
         Отображает информацию об объекте класса для пользователей
         Возвращает строку в формате 'название товара'
         """
-        return self.__name
+        return self.name
 
     def __add__(self, other):
         """
