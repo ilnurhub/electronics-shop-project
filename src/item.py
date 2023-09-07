@@ -3,6 +3,15 @@ import csv
 from config import ROOT_PATH
 
 
+class InstantiateCSVError(Exception):
+
+    def __init__(self, *args, **kwargs):
+        self.message = args[0] if args else 'Файл поврежден'
+
+    def __str__(self):
+        return self.message
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -85,16 +94,22 @@ class Item:
         self.price *= Item.pay_rate
 
     @classmethod
-    def instantiate_from_csv(cls) -> None:
+    def instantiate_from_csv(cls, folder='src', filename='items.csv') -> None:
         """
         Класс-метод, инициализирующий экземпляры класса `Item` данными из файла _src/items.csv_
         """
         cls.all = []
-        file_path = os.path.join(ROOT_PATH, 'src', 'items.csv')
-        with open(file_path, newline='', encoding='windows-1251') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                cls(row['name'], cls.string_to_number(row['price']), cls.string_to_number(row['quantity']))
+
+        file_path = os.path.join(ROOT_PATH, folder, filename)
+        if os.path.exists(file_path):
+            with open(file_path, newline='', encoding='windows-1251') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if len(row) < 3:
+                        raise InstantiateCSVError(f'Файл {filename} поврежден')
+                    cls(row['name'], cls.string_to_number(row['price']), cls.string_to_number(row['quantity']))
+        else:
+            raise FileNotFoundError(f'Отсутствует файл {filename}')
 
     @staticmethod
     def string_to_number(num_str) -> int:
