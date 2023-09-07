@@ -86,3 +86,8 @@ def test_add_quantity(iphone):
     assert iphone + iphone == 10
     with pytest.raises(ValueError):
         assert iphone + 10 == 15
+
+
+def test_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv(filename='my_item.csv')
