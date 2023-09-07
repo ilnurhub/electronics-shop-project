@@ -20,6 +20,7 @@ class MixinLang:
 class Keyboard(Item, MixinLang):
     def __init__(self, name, price, quantity):
         super().__init__(name, price, quantity)
+        MixinLang.__init__(self)
 
     @property
     def name(self):
