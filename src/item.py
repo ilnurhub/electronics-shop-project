@@ -3,6 +3,15 @@ import csv
 from config import ROOT_PATH
 
 
+class InstantiateCSVError(Exception):
+
+    def __init__(self, *args, **kwargs):
+        self.message = args[0] if args else 'Файл поврежден'
+
+    def __str__(self):
+        return self.message
+
+
 class Item:
     """
     Класс для представления товара в магазине.
