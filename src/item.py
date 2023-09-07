@@ -105,6 +105,8 @@ class Item:
             with open(file_path, newline='', encoding='windows-1251') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
+                    if len(row) < 3:
+                        raise InstantiateCSVError(f'Файл {filename} поврежден')
                     cls(row['name'], cls.string_to_number(row['price']), cls.string_to_number(row['quantity']))
         else:
             raise FileNotFoundError(f'Отсутствует файл {filename}')
